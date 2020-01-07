@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Warehouse</string>
+    <string name="scanFile" translatable="false">查看取货时间</string>
+</resources>
