@@ -27,8 +27,8 @@ public class Location extends AppCompatActivity {
     private final static int SEARCH_CODE = 0x123;
     private BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     private String MAC1 = "68:6A:AC:2C:68:23";//LIUJIE
-    private String MAC2 = "14:95:CE:DC:D4:4A";//WANGRUI
-    private String MAC3 = "98:10:E8:7C:6B:C8";//YANGQI
+    private String MAC2 = "6D:97:AF:96:61:18";//WANGRUI
+    private String MAC3 = "65:C3:EF:CC:CB:13";//YANGQI
     //private String MAC1 = "5C:03:39:BB:36:49";
     //private String MAC2 = "A0:86:C6:1E:52:2E";
     //private String MAC3 = "73:F1:94:03:22:B6";
@@ -51,13 +51,8 @@ public class Location extends AppCompatActivity {
     Runnable runnable=new Runnable() {
         @Override
         public void run() {
-
-            Log.d("xiancheng","线程执行了");
-
             startScanBluth();
             refreshUI();
-
-            //要做的事情
             handler.postDelayed(this, 3000);
         }
     };
@@ -82,16 +77,11 @@ public class Location extends AppCompatActivity {
         //设置相对布局（控件）的大小
         params = new RelativeLayout.LayoutParams(100,100);
         //设置布局控件的位置
-        int show_x= (int) (loc_x);
-        int show_y= (int) (1290-loc_y/2);
-
         params.setMargins(loc_x,1290-loc_y/2, 0, 0);
         //设置image的布局以及将imageview组件添加到relative布局中
         imageView.get(i).setLayoutParams(params);
         relativeLayout.addView(imageView.get(i));
         //改变文本的xy值
-
-        //mTextView.setText("x="+loc_x+",y="+loc_y);
         Log.e("Locationxy",Integer.toString(loc_x)+"  "+Integer.toString(loc_y));
         i++;
     }
@@ -148,8 +138,6 @@ public class Location extends AppCompatActivity {
         double f=Math.pow(p1_x, 2) - Math.pow(p2_x, 2) + Math.pow(p1_y, 2) - Math.pow(p2_y, 2) + Math.pow(disMac3, 2) - Math.pow(disMac2, 2);
         loc_x=(int)((b*f-e*c)/(2*b*d-2*a*e));
         loc_y=(int)((a*f-d*c)/(2*a*e-2*b*d));
-        //String string=String.valueOf(loc_x).substring(0,5)+","+String.valueOf(loc_y).substring(0,5);
-        Log.d("Location","\n******\n你的坐标x为:"+Integer.toString(loc_x)+"y:"+Integer.toString(loc_y)+"\n******");
     }
     /**
      * 广播接收器

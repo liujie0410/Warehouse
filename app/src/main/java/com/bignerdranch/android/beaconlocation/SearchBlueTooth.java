@@ -243,16 +243,14 @@ public class SearchBlueTooth extends AppCompatActivity implements View.OnTouchLi
         double f=Math.pow(p1_x, 2) - Math.pow(p2_x, 2) + Math.pow(p1_y, 2) - Math.pow(p2_y, 2) + Math.pow(disMac3, 2) - Math.pow(disMac2, 2);
         loc_x=(int)((b*f-e*c)/(2*b*d-2*a*e));
         loc_y=(int)((a*f-d*c)/(2*a*e-2*b*d))+800;
-        //loc_x=317;
-       // loc_y= 1337;
         Log.d("MainActivity","________*******________x: "+Integer.toString(loc_x)+"  y: "+Integer.toString(loc_y));
         showPosition(loc_x,loc_y);
         mSet.clear();
     }
 
     public void showPosition(int x,int y){
-        x_end=318;
-        y_end=40;
+        x_end=x;
+        y_end=y;
         Toast.makeText(SearchBlueTooth.this,"纵坐标"+y_end,Toast.LENGTH_SHORT).show();
         loc_relativeLayout = (RelativeLayout)findViewById(R.id.loc_relative);
         mImageView.add(1,new ImageView(SearchBlueTooth.this));
